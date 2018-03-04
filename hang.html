@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Deadpool Hangman</title>
+        <h1 id = "lose" style="color:red"></h1>
+        <h1 id = "win" style="color:green"></h1>
+        <h3 > right words:
+            <br><br>
+            <span id = "rightGuess"></span>
+        </h3>
+           <br><br>
+           <h4>lives: 
+               <span id = "lives"></span>
+           </h4>
+           <br>
+           <h3>wrong words: 
+               <br>
+               <span id ="wrongGuesses"></span>
+           </h3>
+
+
+    </head>
+        <body>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Deadpool Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <script type= "text/javascript">
+
+
+        //Hangman answer
+        var words = ["deadpool", "colossus"]
+        //track the wrong words
+        var wrongWords = [];
+        //track the right words
+        var rightWords = ["_","_","_"];
+        var rightWords1 = ["_","_","_"]
+        //keys that the user presses
+        var userInputKey;
+        //chooses random number
+        var randomNumber = (math.floor(Math.ramdom() * words.length));;
+        var num = 1;
+        //choose random word from array
+        var currentWord = words[1];
+        //slits words so the lenght would be equal to 3 insted of 1
+        var wordSplit = currentWord.split('');
+        //change html
+        var wrongWordText = document.getElementById('wrongGuess');
+        var rightWordText = document.getElementById('rightGuess');
+        var livesText = document.getElementById('lives');
+        var loseText = document.getElementById('lose');
+        var wintext = document.getElementById('win');
+        var wrongCount = 7;
+        var count = 0;
+       
+
+        function displayLives()
+        {
+            livesText.textContent = wrongCount;
+        }
+        {
+            function checkRightWord()
+            {
+                for(var i =0, x =1; i < wordSplit.length; i++, x ++)
+                {
+                    if(userInputKey === currentWord.charAt(i))
+                    {
+                        rightWords.fill(userInputKey, i,x);
+                        //adds the array rightWords to the DOM
+                        rightWordText.textContent = rightWords;
+                    }
+                }
+            }
+            
+        }
+
+function wrongWord()
+{
+    wrongWords.push(userInputKey);
+    wrongWordText.textContent = wrongWords;
+    wrongCount--;
+    livesText.textContent = wrongCount;
+}
+function checkWord()
+{
+    if(currentWord.indexOf(userInputKey) > -1)
+    {
+        checkRightWord();
+        winGameOver();
+    }
+    else
+    {
+        wrongWord();
+        loseGameOver();
+    }
+}
+function loseGameOver()
+{
+    id(wrongCount ===0)
+    {
+        loseText.textContent = "LOSER!!";
+        setTimeout(function()
+        {
+            livesText.textContent = 7;
+            wrongCount = 7;
+            wrongWords = [];
+            wrongWordText.textContent = "";
+            rightWordText.textContent = ["_", "_","_","_"];
+            rightWords = ["_", "_","_","_"];
+            winText.textContent = "";
+            loseText.textContent = "";
+        }
+    }
+}
+function winGameOver()
+{
+    if(rightWords.jion() === wordSplit.join())
+    {
+        livesText.textContent = wrongCount;
+        rightWords.textContent = rightWords;
+        winText.textContent = "MAXIMUM EFFORT";
+        //reset game
+        setTimeout(function()) 
+        {
+            livesText.textContent = 7;
+            wrongCount = 7;
+            wrongWords = [];
+            wrongWordText.textContent = "";
+            rightWords = ["_", "_","_","_"];
+            rightWordText.textContent = ["_", "_","_","_"];
+            winText.textContent = "";
+            loseText.textContent = "";
+        }
+    }
+}
+function reset()
+{
+    wrongCount = 7;
+    rightWords = ["_", "_","_","_"];
+    winText.textContent = "";
+    loseText.textContent = "";
+}
+//-------------------START----------------------------
+function start()
+{
+    document.onkeyup = function()
+    {
+        var rightWords = ["_","_","_"];
+        rightWordText.textContent = ["_", "_","_","_"];
+        document.getElementById('rightGuess').textContent = rightWords;
+        userInputKey = event.key;
+        displayLives();
+        checkWord (); 
+    }
+}
+function start1()
+{
+    document.onkeyup = function()
+    {
+        document.getElementById('rightGuess').textContent = rightWords1;
+        .textContent = rightWords;
+        userInputKey = event.key;
+        displayLives();
+        checkWord();
+    }
+}
+if(ramdom ===0)
+{
+    start();
+}
+else if(randomNumber ===1)
+{
+    start1();
+}
+        </script>
+    
+</body>
+</html>
